@@ -41,6 +41,7 @@ export const initScrollAnimations = () => {
             duration: 0.6,
             delay: parseFloat(el.dataset.delay || "0"),
             ease: "easeInOut",
+
         });
     });
     inView(".animate-down-on-scroll", (el: any) => {

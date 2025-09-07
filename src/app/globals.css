@@ -60,10 +60,10 @@
 }
 
 .bg-dust {
-  background-image: url("/assets/dust.png");
+  background-image: url("/assets/dust.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  backdrop-filter: blur(20px);
+ 
 }
 
 .button-gradient {
