@@ -32,7 +32,7 @@ export async function getProjectsPageContent() {
   return await api.get("/project-pages?populate[items][populate]=*").then(res => res.data.data[0])
 }
 export async function getContactUSPageContent() {
-  return await api.get("/contact-us-pages?populate=*").then(res => res.data.data[0])
+  return await api.get("/contact-us-pages?populate[hero][populate]=*&populate[contactInfo][populate]=icon&populate[form][populate]=*").then(res => res.data.data[0])
 }
 
 export async function getCaseStudyBySlug(id:string) {
