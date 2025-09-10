@@ -50,7 +50,7 @@ const Navbar = () => {
                     <Link href="/contact-us" className={`${activeNav === '/contact-us' ? "!py-[8px] 2xl:!px-[32px] lg:!px-[28px] md:!px-[20px] !px-[18px] !border-[1px] !border-[#0B68F480] rounded-full bg-[#0D69F226] !shadow-[0px_0px_15px_0px_#0066FF80]" : ""} whitespace-nowrap`}>Contact Us</Link>
                 </div>
                 <button className="w-[56px] h-[56px] !rounded-full !border !border-[#0B68F480] cursor-pointer md:hidden flex justify-center items-center" onClick={() => setShowMenu(!showMenu)}>
-                    {showMenu ? <img src="/assets/close-menu.svg" /> : <img src="/assets/menu.svg" />}
+                    {showMenu ? <Image width={15} height={15} alt="close-menu" src="/assets/close-menu.svg" /> : <Image width={16} height={14} alt="menu" src="/assets/menu.svg" />}
                 </button>
                 <div className={`absolute !top-[100%] w-full md:hidden ${showMenu ? "flex flex-col" : "hidden"} text-[#FFFFFFBF] text-[18px] font-medium leading-[100%] gap-[32px] !backdrop-blur-xl !p-[28px] !rounded-[16px] bg-[#0D69F21A] items-center !border !border-[#0B68F480]`}>
                     <Link href="/" className={`${activeNav === '/' ? "!py-[8px] !px-[28px] !border-[1px] !border-[#0B68F480] rounded-full bg-[#0D69F226] !shadow-[0px_0px_15px_0px_#0066FF80]" : ""} whitespace-nowrap`}>Home</Link>

@@ -64,6 +64,7 @@ const Footer = () => {
                             fill
                             className="object-contain"
                             priority
+                            sizes="(max-width: 768px) 126px, (max-width: 1024px) 142px, (max-width: 1280px) 152px, 122px"
                         />
                     </div>
 
@@ -76,6 +77,7 @@ const Footer = () => {
                                 fill
                                 className="object-contain"
                                 priority
+                                sizes="20px"
                             />
                         </a>
                     ))}</div>

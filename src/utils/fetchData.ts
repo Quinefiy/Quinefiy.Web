@@ -36,6 +36,7 @@ export async function getContactUSPageContent() {
 }
 
 export async function getCaseStudyBySlug(id:string) {
+  console.log("id",id)
   return await api.get('').then(res => res.data.data)
 }
 

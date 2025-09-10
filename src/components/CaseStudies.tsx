@@ -23,7 +23,7 @@ const CaseStudies = ({ data, showHeader }: Props) => {
             <div className="w-full flex justify-center items-center gap-[24px] flex-wrap ">
                 {data?.items?.map((c: any, index: number) => (
                     <div data-delay={index * 0.3} className="sm:w-[33%] w-full max-w-[420px] sm:min-w-[408px] priceCard-gradient rounded-[16px] lg:p-[32px] p-[24px] border border-[#6BAAFF4D] hover:border-[#00429B80] flex flex-col gap-[32px] opacity-0 animate-down-on-scroll" key={c.id}>
-                        <div className="w-full h-[224px] relative aspect-[432/224] ">
+                        <div className="w-full h-[224px] relative aspect-[432/224]">
                             <Image fill src={c.icon.url} alt={c.icon.alternativeText} className="rounded-[12px]" />
                         </div>
                         <div>

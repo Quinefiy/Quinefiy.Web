@@ -1,56 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
 import HeadingCard from "./HeadingCard";
-import api from "@/lib/api";
-import { useEffect } from "react";
-import { initScrollAnimations } from "@/utils/scrollAnimations";
-
+ 
 type Props = {
     showHeader: boolean;
     data: any;
 }
 
 const SoftwareProduct = ({ showHeader ,data}: Props) => {
-    const products = [
-        {
-            id: 1,
-            img: "/assets/web-programming.png",
-            title: "Custom Software Development",
-            desc: "Building tailored solutions for businesses."
-        },
-        {
-            id: 2,
-            img: "/assets/erp.png",
-            title: "Enterprise Software Solutions",
-            desc: "ERP, CRM, and other business software."
-        },
-        {
-            id: 3,
-            img: "/assets/saas.png",
-            title: "SaaS Development",
-            desc: "Developing cloud-based software as a service."
-        },
-        {
-            id: 4,
-            img: "/assets/development.png",
-            title: "Web Development",
-            desc: "Our web development services deliver fast, secure, and user-friendly websites and applications."
-        },
-        {
-            id: 5,
-            img: "/assets/mobile-development.png",
-            title: "Mobile App Development",
-            desc: "We offer custom mobile app development services, specializing in iOS and Android platforms, creating user-friendly native, hybrid, and progressive web apps that cater to business needs and engage users."
-        }
-
-    ];
-
-    // const getProducts = async () => {
-    //     return await api.get("/software-sections?populate[items][populate]=icon").then(res => res.data.data[0])
-    // }
-    // const { data,isSuccess } = useQuery({ queryKey: ['software-products-list'], queryFn: getProducts })
-    //  useEffect(() => {
-    //     initScrollAnimations();
-    //   }, [isSuccess])
 
     return (
         <div className=" w-full max-w-[1535px] relative overflow-x-clip">
@@ -66,7 +22,7 @@ const SoftwareProduct = ({ showHeader ,data}: Props) => {
                             {/* <div className="absolute top-0 left-0 bottom-0 right-0 bg-[url(/assets/dust.png)] z-10 bg-cover">
                         </div> */}
                             <div className="w-[52.5px] h-[52.5px] rounded-full flex items-center justify-center mb-[32px] border-[0.75px] border-[#FFFFFF1A]">
-                                <img src={product.icon.url} alt={product.icon.alternativeText} className="w-[32px]" />
+                                <Image width={32} height={32} src={product.icon.url} alt={product.icon.alternativeText} className="" />
                             </div>
                             <h4 className="2xl:text-[22px] lg:text-[20px] sm:text-[18px] text-[16px] text-[#E1E1E1] font-bold mb-[12px]  leading-[160%] ">{product.title}</h4>
                             <p className="2xl:text-[16px] lg:text-[14.5px] sm:text-[13px] text-[12px] text-[#FFFFFFD9] font-medium leading-[160%]">{product.description}</p>

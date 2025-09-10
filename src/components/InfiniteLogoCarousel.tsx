@@ -54,6 +54,7 @@ export default function InfiniteSlider() {
                 alt=""
                 className="object-contain"
                 fill
+                sizes=''
               />
           </div>
         ))}

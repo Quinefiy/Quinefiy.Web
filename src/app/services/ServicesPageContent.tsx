@@ -5,13 +5,14 @@ import SoftwareProduct from "@/components/SoftwareProduct";
 import StartYourJourney from "@/components/StartYourJourney";
 import Image from "next/image";
 import Link from "next/link";
-import parse from 'html-react-parser';
-import DOMPurify from 'dompurify';
+// import parse from 'html-react-parser';
+// import DOMPurify from 'dompurify';
 import { useEffect } from "react";
 import { initScrollAnimations } from "@/utils/scrollAnimations";
 import { useIsFetching, useQuery } from "@tanstack/react-query";
 import { getProducts, getServicesPageContent } from "@/utils/fetchData";
 import PageWithLoader from "@/components/ui/PageWithLoader";
+import ServiceRichText from "@/components/RichText";
 
 export default function ServicesPageContent() {
 
@@ -48,7 +49,7 @@ export default function ServicesPageContent() {
                             <div className={`${index % 2 === 0 ? "lg:flex-row-reverse flex-col-reverse" : "lg:flex-row flex-col-reverse"} flex  2xl:gap-[74px] xl:gap-[62px] lg:gap-[56px] md:gap-[48px] sm:gap-[40px] gap-[32px] items-start w-full`} key={service.id}>
                                 <div className={`${index % 2 === 0 ? "opacity-0 animate-right-on-scroll" : "opacity-0 animate-left-on-scroll"} flex-1 lg:w-auto w-full self-center lg:max-w-[566px] max-w-[450px] border border-[#6BAAFF4D] p-[24px] rounded-[16px]`}>
                                     <div className="w-full relative aspect-[566/488]">
-                                        <Image src={service.items.image.url} fill alt={service.items.image.alternativeText} className="rounded-[16px]  " />
+                                        <Image src={service.items.image.url} fill alt={service.items.image.alternativeText} className="rounded-[16px]  " sizes="" />
                                     </div>
                                 </div>
                                 <div className={`${index % 2 === 0 ? "opacity-0 animate-left-on-scroll" : "opacity-0 animate-right-on-scroll"} flex-1 flex flex-col gap-[24px] lg:min-w-[500px]`}>
@@ -57,9 +58,10 @@ export default function ServicesPageContent() {
                                         <Image width={21} height={21} alt="" src="/assets/blue-star.svg" />
                                         <div className="flex flex-col gap-[12px]">
                                             <p className="text-[#FFFFFF] xl:tracking-[1.8px] xl:text-[18px] lg:tracking-[1.7px] lg:text-[17px] md:tracking-[1.6px] md:text-[16px] sm:tracking-[1.5px] sm:text-[15px] tracking-[1.4px] text-[14px] font-bold leading-[160%]"> What We Offer:</p>
-                                            <ul className="text-[#FFFFFF] space-y-[8px] xl:tracking-[1.8px] xl:text-[18px] lg:tracking-[1.7px] lg:text-[17px] md:tracking-[1.6px] md:text-[16px] sm:tracking-[1.5px] sm:text-[15px] tracking-[1.4px] text-[14px] font-medium leading-[160%] pl-[18px] list-disc " >
+                                            {/* <ul className="text-[#FFFFFF] space-y-[8px] xl:tracking-[1.8px] xl:text-[18px] lg:tracking-[1.7px] lg:text-[17px] md:tracking-[1.6px] md:text-[16px] sm:tracking-[1.5px] sm:text-[15px] tracking-[1.4px] text-[14px] font-medium leading-[160%] pl-[18px] list-disc " >
                                                 {parse(DOMPurify.sanitize(service.items.richText.body))}
-                                            </ul>
+                                            </ul> */}
+                                            <ServiceRichText html={service.items.richText.body} />
                                         </div>
                                     </div>
                                 </div>
