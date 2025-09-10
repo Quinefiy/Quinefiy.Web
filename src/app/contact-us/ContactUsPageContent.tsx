@@ -15,16 +15,17 @@ import api from "@/lib/api";
 import { motion } from "motion/react";
 
 type FormInputs = {
-    firstName: string,
-    lastName: string,
-    email: string,
-    message: string
+    firstName: string;
+    lastName: string;
+    email: string;
+    message?: string;
 }
+
 type ContactInfo = {
     data: {
         name: string,
         email: string,
-        message: string
+        message?: string
     }
 }
 const schema = yup
@@ -57,11 +58,11 @@ export default function ContactUsPageContent() {
         }
     }, [isLoading, isFetching]);
 
-    const { mutate, isPending, isSuccess } = useMutation({
+    const { mutate, isPending} = useMutation({
         mutationFn: (data: ContactInfo) => {
             return api.post("/contact-submissions", data)
         },
-        onSuccess: (response, variables) => {
+        onSuccess: () => {
             setShowReceivedToast(true)
             reset()
             setTimeout(() => {
@@ -73,7 +74,7 @@ export default function ContactUsPageContent() {
         }
     });
 
-    const onSubmit = (data: any) => {
+    const onSubmit = (data: FormInputs) => {
         const contactData = {
             data: {
                 name: `${data.firstName} ${data.lastName}`,
@@ -81,7 +82,7 @@ export default function ContactUsPageContent() {
                 message: data.message
             }
         }
-        console.log("data", contactData)
+
         mutate(contactData)
     };
 

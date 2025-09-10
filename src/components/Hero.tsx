@@ -3,42 +3,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
 import HeadingCard from "@/components/HeadingCard";
-import { initScrollAnimations } from "@/utils/scrollAnimations";
-import { useEffect } from "react";
-import api from "@/lib/api";
-import { useQuery } from "@tanstack/react-query";
 
 
-export default function Hero({data}: any) {
-    // const getHeroSectionData = async () => {
-    //     return await api.get("/hero-sections?populate=*").then(res => res.data.data[0])
-    // }
-    // const { data, isSuccess } = useQuery({ queryKey: ['hero-data'], queryFn: getHeroSectionData })
-
- 
+export default function Hero({ data }: any) {
 
     return (
 
         <div className="w-full max-w-[1535px] flex md:flex-row flex-col-reverse lg:justify-between justify-center items-center mt-[100px] relative">
             <div className="bg-[url(/assets/Dots.png)] bg-cover opacity-10 z-[-1] inset-0 absolute "></div>
             <div className="w-full">
- 
-                    <div data-delay="0" className={`opacity-0 animate-left-on-scroll flex flex-col lg:w-auto w-full lg:gap-[24px] md:gap-[16px] sm:gap-[24px] gap-[12px]`}>
-                        <HeadingCard text="Best Quality" />
-                        <h1 className="text-[#E1E1E1] 2xl:text-[64px] xl:text-[60px] lg:text-[56px] md:text-[40px] sm:text-[48px] text-[32px] font-bold leading-[140%]">{data?.head}</h1>
-                        <p className="text-[#FFFFFFD9] 2xl:text-[28px] xl:text-[24px] lg:text-[20px] md:text-[16px] sm:text-[20px] text-[14px] font-medium leading-[150%] 2xl:max-w-[60%] xl:max-w-[450px] lg:max-w-[380px] md:max-w-[78%]" >{data?.subHead}</p>
-                        <div className="flex items-center xl:gap-[24px] md:gap-[10px] sm:gap-[18px] gap-[8px] mt-[12px]">
-                            <Link href="/about-us" className="blue-gradient h-[54px] px-[32px] xl:text-[18px] md:text-[14px] sm:text-[16px] text-[14px] font-bold text-[#FFFFFF] rounded-[16px] flex items-center justify-center whitespace-nowrap">Discover More</Link>
-                            <Link href="/contact-us" className="blue-gradient h-[54px] xl:text-[18px] md:text-[14px] sm:text-[16px] text-[14px] font-bold text-[#FFFFFF] rounded-[16px] p-[1px]">
-                                <span className="w-full h-full bg-[#01070F] px-[30px] flex items-center justify-center rounded-[16px] whitespace-nowrap">
-                                    Contact Us
-                                </span>
-                            </Link>
-                        </div>
-
-
+                <div data-delay="0" className={`opacity-0 animate-left-on-scroll flex flex-col lg:w-auto w-full lg:gap-[24px] md:gap-[16px] sm:gap-[24px] gap-[12px]`}>
+                    <HeadingCard text="Best Quality" />
+                    <h1 className="text-[#E1E1E1] 2xl:text-[64px] xl:text-[60px] lg:text-[56px] md:text-[40px] sm:text-[48px] text-[32px] font-bold leading-[140%]">{data?.head}</h1>
+                    <p className="text-[#FFFFFFD9] 2xl:text-[28px] xl:text-[24px] lg:text-[20px] md:text-[16px] sm:text-[20px] text-[14px] font-medium leading-[150%] 2xl:max-w-[60%] xl:max-w-[450px] lg:max-w-[380px] md:max-w-[78%]" >{data?.subHead}</p>
+                    <div className="flex items-center xl:gap-[24px] md:gap-[10px] sm:gap-[18px] gap-[8px] mt-[12px]">
+                        <Link href="/about-us" className="blue-gradient h-[54px] px-[32px] xl:text-[18px] md:text-[14px] sm:text-[16px] text-[14px] font-bold text-[#FFFFFF] rounded-[16px] flex items-center justify-center whitespace-nowrap">Discover More</Link>
+                        <Link href="/contact-us" className="blue-gradient h-[54px] xl:text-[18px] md:text-[14px] sm:text-[16px] text-[14px] font-bold text-[#FFFFFF] rounded-[16px] p-[1px]">
+                            <span className="w-full h-full bg-[#01070F] px-[30px] flex items-center justify-center rounded-[16px] whitespace-nowrap">
+                                Contact Us
+                            </span>
+                        </Link>
                     </div>
-         
+                </div>
             </div>
             <div className="opacity-0 animate-hero-on-scroll flex flex-col self-end gap-[10px] mt-[60px] sm:w-auto w-[86%]">
                 <div className="flex-1 relative xl:min-h-[300px] lg:min-h-[250px] md:min-h-[230px] sm:min-h-[250px] min-h-[39.2vw]">
@@ -47,7 +33,9 @@ export default function Hero({data}: any) {
                         animate={{ opacity: 1, x: 0, y: 0 }}
                         transition={{ duration: 0.4, delay: 2.7, ease: "easeOut" }}
                         className="absolute sm:top-0 top-[-4%] left-[50%] dark-gradient xl:w-[81px] lg:w-[71px] md:w-[60.5px] sm:w-[71px] w-[11.3vw] xl:h-[81px] lg:h-[71px] md:h-[60.5px] sm:h-[71px] h-[11.3vw] rounded-full flex justify-center items-center">
-                        <img src="/assets/software-testing.png" className="w-[50%]" />
+                        <div className="w-[50%] aspect-[1/1] relative">
+                            <Image fill alt="software-testing" src="/assets/software-testing.png" className="" priority />
+                        </div>
                     </motion.div>
                     <motion.div
                         initial={{ scaleY: 0 }}
@@ -65,7 +53,9 @@ export default function Hero({data}: any) {
                         animate={{ opacity: 1, x: 0, y: 0 }}
                         transition={{ duration: 0.4, delay: 2.7, ease: "easeOut" }}
                         className="dark-gradient absolute lg:bottom-[-30px] md:bottom-[-20px] sm:bottom-[-30px] bottom-[-10%] lg:left-[59.5%] md:left-[62%] sm:left-[59.5%] left-[59.5%] xl:w-[61px] lg:w-[53.5px] md:w-[45.5px] sm:w-[53.5px] w-[8.5vw] xl:h-[61px] lg:h-[53.5px] md:h-[45.5px] sm:h-[53.5px] h-[8.5vw] rounded-full flex justify-center items-center">
-                        <img src="/assets/processor-2.png" className="w-[50%]" />
+                        <div className="w-[50%] aspect-[1/1] relative">
+                            <Image fill alt="processor" src="/assets/processor-2.png" className="" priority />
+                        </div>
                     </motion.div>
                     <motion.div
                         initial={{ scaleY: 0 }}
@@ -83,7 +73,9 @@ export default function Hero({data}: any) {
                         animate={{ opacity: 1, x: 0, y: 0 }}
                         transition={{ duration: 0.4, delay: 2.7, ease: "easeOut" }}
                         className="dark-gradient absolute lg:bottom-[100px] md:bottom-[85px] sm:bottom-[100px] bottom-[40%] right-[20%] xl:w-[41px] lg:w-[36px] md:w-[31px] sm:w-[36px] w-[5.8vw] xl:h-[41px] lg:h-[36px] md:h-[31px] sm:h-[36px] h-[5.8vw] rounded-full flex justify-center items-center">
-                        <img src="/assets/code.png" className="w-[50%]" />
+                        <div className="w-[50%] aspect-[1/1] relative">
+                            <Image fill alt="code" src="/assets/code.png" className="" priority />
+                        </div>
                     </motion.div>
                     <motion.div
                         initial={{ scaleY: 0 }}
@@ -101,7 +93,9 @@ export default function Hero({data}: any) {
                         animate={{ opacity: 1, x: 0, y: 0 }}
                         transition={{ duration: 0.4, delay: 2.7, ease: "easeOut" }}
                         className="dark-gradient absolute lg:top-[20%] md:top-[30%] sm:top-[20%] top-[19%] lg:left-[-30px] md:left-[-50px] sm:left-[-30px] left-[-5.9%] xl:w-[51px] lg:w-[45px] md:w-[38.3px] sm:w-[45px] w-[7.2vw] xl:h-[51px] lg:h-[45px] md:h-[38.3px] sm:h-[45px] h-[7.2vw] rounded-full flex justify-center items-center">
-                        <img src="/assets/coding-gear.png" className="w-[50%] " />
+                        <div className="w-[50%] aspect-[1/1] relative">
+                            <Image fill alt="coding-gear" src="/assets/coding-gear.png" className="" priority />
+                        </div>
                     </motion.div>
                     <motion.div
                         initial={{ scaleY: 0 }}
@@ -119,7 +113,9 @@ export default function Hero({data}: any) {
                         animate={{ opacity: 1, x: 0, y: 0 }}
                         transition={{ duration: 0.4, delay: 2.7, ease: "easeOut" }}
                         className="dark-gradient absolute lg:bottom-[-10px] md:bottom-[-25px] sm:bottom-[-10px] bottom-[-10px] lg:left-[-50px] md:left-[-45px] sm:left-[-50px] left-[-10%] xl:w-[91px] lg:w-[80px] md:w-[68px] sm:w-[80px] w-[12.8vw] xl:h-[91px] lg:h-[80px] md:h-[68px] sm:h-[80px] h-[12.8vw] rounded-full flex justify-center items-center">
-                        <img src="/assets/artificial-intelligence.png" className="w-[50%]" />
+                        <div className="w-[50%] aspect-[1/1] relative">
+                            <Image fill alt="artificial-intelligence" src="/assets/artificial-intelligence.png" className="" priority />
+                        </div>
                     </motion.div>
                     <motion.div
                         initial={{ scaleY: 0 }}
@@ -137,7 +133,9 @@ export default function Hero({data}: any) {
                         animate={{ opacity: 1, x: 0, y: 0 }}
                         transition={{ duration: 0.4, delay: 2.7, ease: "easeOut" }}
                         className="dark-gradient absolute lg:top-[-35px] md:top-[-27px] sm:top-[-35px] top-[-35px] lg:left-[20%] md:left-[13%] sm:left-[20%] left-[20%]  xl:w-[71px] lg:w-[62px] md:w-[51px] sm:w-[62px] w-[9.8vw] xl:h-[71px] lg:h-[62px] md:h-[51px] sm:h-[62px] h-[9.8vw] rounded-full flex justify-center items-center z-[1]">
-                        <img src="/assets/industrial.png" className="w-[50%] " />
+                        <div className="w-[50%] aspect-[1/1] relative">
+                            <Image fill alt="industrial" src="/assets/industrial.png" className="" priority />
+                        </div>
                     </motion.div>
                     <motion.div
                         initial={{ scaleY: 0 }}

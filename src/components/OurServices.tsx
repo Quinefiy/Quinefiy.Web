@@ -8,8 +8,9 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel"
 import Link from "next/link";
+import Image from "next/image";
 
-const OurServices = ({data}: any) => {
+const OurServices = ({ data }: any) => {
     const [slidesToScroll, setSlidesToScroll] = useState(4)
 
     // const getServices = async () => {
@@ -42,30 +43,32 @@ const OurServices = ({data}: any) => {
                     <CarouselPrevious />
                     <CarouselNext />
                     {data?.length > 0 &&
-                    <CarouselContent className="items-stretch">
-                        {data?.map((service: any) => (
-                            <CarouselItem className="xl:basis-1/4 lg:basis-1/3 sm:basis-1/2 " key={service.id}>
-                                <div className="group [perspective:1000px] h-full sm:w-full w-[73%] mx-auto relative">
-                                    <div className="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                                        {/* Front side */}
-                                        <div className="!min-h-full serviceCard-gradient lg:py-[52px] sm:py-[46px] py-[41px] sm:px-[32px] px-[28px] rounded-[16px] border border-[#6BAAFF4D] cursor-pointer [backface-visibility:hidden]">
-                                            <img src={service.icon.url} alt={service.icon.alternativeText} className="lg:w-[52px] sm:w-[46px] w-[42px]" />
-                                            <h3 className="2xl:text-[22px] lg:text-[20px] sm:text-[18px] text-[16px] text-[#E1E1E1] font-bold mb-[12px]  leading-[160%] xl:mt-[48px] lg:mt-[40px] md:mt-[36px] sm:mt-[30px] mt-[24px]">
-                                                {service.title}
-                                            </h3>
-                                        </div>
-                                        {/* Back side */}
-                                        <Link href="/services" className="absolute left-0 right-0 bottom-0 top-0 !min-h-full serviceCard-gradient flex items-center justify-center rounded-[16px] border border-[#6BAAFF4D] cursor-pointer [transform:rotateY(180deg)] [backface-visibility:hidden]">
-                                            <h3 className="2xl:text-[22px] lg:text-[20px] sm:text-[18px] text-[16px] text-[#E1E1E1] font-bold">
-                                                Show More
-                                            </h3>
-                                        </Link>
+                        <CarouselContent className="items-stretch">
+                            {data?.map((service: any) => (
+                                <CarouselItem className="xl:basis-1/4 lg:basis-1/3 sm:basis-1/2 " key={service.id}>
+                                    <div className="group [perspective:1000px] h-full sm:w-full w-[73%] mx-auto relative">
+                                        <div className="relative h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                                            {/* Front side */}
+                                            <div className="!min-h-full serviceCard-gradient lg:py-[52px] sm:py-[46px] py-[41px] sm:px-[32px] px-[28px] rounded-[16px] border border-[#6BAAFF4D] cursor-pointer [backface-visibility:hidden]">
+                                                <div className="lg:w-[52px] sm:w-[46px] w-[42px] relative aspect-[1/1]">
+                                                    <Image fill src={service.icon.url} alt={service.icon.alternativeText} className="" sizes="(max-width: 640px) 46px, (max-width: 1024px) 52px, 42px" />
+                                                </div>
+                                                <h3 className="2xl:text-[22px] lg:text-[20px] sm:text-[18px] text-[16px] text-[#E1E1E1] font-bold mb-[12px]  leading-[160%] xl:mt-[48px] lg:mt-[40px] md:mt-[36px] sm:mt-[30px] mt-[24px]">
+                                                    {service.title}
+                                                </h3>
+                                            </div>
+                                            {/* Back side */}
+                                            <Link href="/services" className="absolute left-0 right-0 bottom-0 top-0 !min-h-full serviceCard-gradient flex items-center justify-center rounded-[16px] border border-[#6BAAFF4D] cursor-pointer [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                                                <h3 className="2xl:text-[22px] lg:text-[20px] sm:text-[18px] text-[16px] text-[#E1E1E1] font-bold">
+                                                    Show More
+                                                </h3>
+                                            </Link>
 
+                                        </div>
                                     </div>
-                                </div>
-                            </CarouselItem>
-                        ))}
-                    </CarouselContent>
+                                </CarouselItem>
+                            ))}
+                        </CarouselContent>
                     }
                 </Carousel>
             </div>

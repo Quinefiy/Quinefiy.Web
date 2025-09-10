@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { initScrollAnimations } from "@/utils/scrollAnimations";
 import { useIsFetching, useQuery } from "@tanstack/react-query";
-import { getAboutUsPageContent} from "@/utils/fetchData";
+import { getAboutUsPageContent } from "@/utils/fetchData";
 import { motion } from "motion/react";
 import PageWithLoader from "@/components/ui/PageWithLoader";
 
@@ -23,7 +23,7 @@ export default function AboutUsPageContent() {
             initScrollAnimations();
         }
     }, [isLoading, isFetching]);
- 
+
     return (
         <PageWithLoader isLoading={isLoading}>
             <div className=" w-full flex justify-center 2xl:px-[96px] xl:px-[52px] lg:px-[36px] md:px-[21px] sm:px-[19px] px-[16px] overflow-x-clip relative">
@@ -35,14 +35,15 @@ export default function AboutUsPageContent() {
                         </div>
                         <h1 data-delay='0.2' className="opacity-0 animate-down-on-scroll text-[#E1E1E1] 2xl:text-[32px] 2xl:tracking-[3.2px] xl:text-[28px] xl:tracking-[2.8px] lg:text-[26px] lg:tracking-[2.6px] md:text-[24px] md:tracking-[2.4px] sm:text-[22px] sm:tracking-[2.2px] text-[18px] tracking-[1.8px] font-bold leading-[140%] max-w-[767px] text-center">{pageContent.head}</h1>
                         <p data-delay='0' className="opacity-0 animate-down-on-scroll text-[#FFFFFFD9] tracking-[1.8px] xl:text-[18px] lg:text-[17px] md:text-[16px] sm:text-[15px] text-[14px] font-medium leading-[160%] lg:max-w-[800px] sm:max-w-[85%] text-center">{pageContent.subHead}</p>
-                        <div className="opacity-0 animate-up-on-scroll bg-dust backdrop-blur-3xl w-full 2xl:mt-[50px] xl:mt-[40px] lg:mt-[32px] md:mt-[25px] sm:mt-[20px] mt-[12px] rounded-[16px] p-[24px] border border-[#6BAAFF4D] relative overflow-hidden">
+                        <div className="opacity-0 animate-up-on-scroll bg-dust backdrop-blur-3xl w-full 2xl:mt-[50px] xl:mt-[40px] lg:mt-[32px] md:mt-[25px] sm:mt-[20px] mt-[12px] rounded-[16px] sm:p-[24px] p-[16px] border border-[#6BAAFF4D] relative overflow-hidden">
                             <div className="absolute inset-0 backdrop-blur-[1px] bg-[#002C6726]"></div>
                             <div className="relative w-full aspect-[2/1]">
                                 <Image
                                     src={pageContent.mainImage.url}
                                     fill
-                                    alt={pageContent.mainImage.alternativeText}
+                                    alt={pageContent.mainImage.alternativeText || ""}
                                     className="rounded-[16px]"
+                                    sizes="100vw"
                                 />
                             </div>
                         </div>
@@ -53,7 +54,7 @@ export default function AboutUsPageContent() {
                             <h2 className="text-[#E1E1E1] 2xl:text-[32px] 2xl:tracking-[3.2px] xl:text-[28px] xl:tracking-[2.8px] lg:text-[26px] lg:tracking-[2.6px] md:text-[24px] md:tracking-[2.4px] sm:text-[22px] sm:tracking-[2.2px] text-[18px] tracking-[1.8px] font-bold leading-[140%] sm:max-w-[560px] max-w-[380px]">{pageContent.teamHighlight.title}</h2>
                             <div className="flex items-center gap-[16px]">
                                 <div className="xl:w-[59px] xl:h-[59px] lg:w-[56px] lg:h-[56px] md:w-[52px] md:h-[52px] sm:w-[48px] sm:h-[48px] w-[45px] h-[45px] border-[0.7px] border-[#6BAAFFB2] rounded-full relative backdrop-blur-lg aspect-[1/1]">
-                                    <Image fill alt={pageContent.teamHighlight.ceoImage.alternativeText} src={pageContent.teamHighlight.ceoImage.url} className="rounded-full" />
+                                    <Image fill alt={pageContent.teamHighlight.ceoImage.alternativeText || "ceo"} src={pageContent.teamHighlight.ceoImage.url} className="rounded-full object-center" sizes="(max-width: 640px) 48px, (max-width: 768px) 52px, (max-width: 1024px) 56px, (max-width: 1280px) 59px, 45px" />
                                 </div>
                                 <div className="sm:gap-[4px] flex flex-col justify-between">
                                     <h4 className="text-[#FFFFFF] xl:text-[18px] xl:tracking-[1.8px] lg:text-[17px] lg:tracking-[1.7px] md:text-[16px] md:tracking-[1.6px] sm:text-[15px] sm:tracking-[1.5px] text-[14px] tracking-[1.4px] font-bold leading-[160%]">{pageContent.teamHighlight.ceoName}</h4>
@@ -79,8 +80,8 @@ export default function AboutUsPageContent() {
                         <div className="w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[24px] xl:mt-[40px] lg:mt-[34px] md:mt-[28px] sm:mt-[20px] mt-[12px]">
                             {pageContent?.OurTeam.map((member: any, index: number) => (
                                 <div data-delay={index * 0.3} className="opacity-0 animate-up-on-scroll max-w-[324px] mx-auto w-full flex flex-col gap-[24px]" key={member.id}>
-                                    <div className=" w-full border-[0.7px] border-[#6BAAFFB2] rounded-[16px] relative backdrop-blur-lg aspect-[324/369] overflow-hidden">
-                                        <Image fill alt={member.photo.alternativeText} src={member.photo.url} className="" />
+                                    <div className="w-full border-[0.7px] border-[#6BAAFFB2] rounded-[16px] relative backdrop-blur-lg aspect-[324/369] overflow-hidden">
+                                        <Image fill alt={member.photo.alternativeText ? member.photo.alternativeText : "member"} src={member.photo.url} className="" sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" />
                                     </div>
                                     <div className="sm:gap-[4px] flex flex-col justify-between">
                                         <h4 className="text-[#FFFFFF] xl:text-[18px] xl:tracking-[1.8px] lg:text-[17px] lg:tracking-[1.7px] md:text-[16px] md:tracking-[1.6px] sm:text-[15px] sm:tracking-[1.5px] text-[14px] tracking-[1.4px] font-bold leading-[160%]">{member.fullName}</h4>
@@ -98,7 +99,7 @@ export default function AboutUsPageContent() {
                                     <p className="text-[#FFFFFF] xl:tracking-[1.8px] xl:text-[18px] lg:tracking-[1.7px] lg:text-[17px] md:tracking-[1.6px] md:text-[16px] sm:tracking-[1.5px] sm:text-[15px] tracking-[1.4px] text-[14px] font-bold leading-[160%] ">{quote.quote}</p>
                                     <div className="flex items-center gap-[16px]">
                                         <div className="xl:w-[59px] xl:h-[59px] bg-white lg:w-[56px] lg:h-[56px] md:w-[52px] md:h-[52px] sm:w-[48px] sm:h-[48px] w-[45px] h-[45px] border-[0.7px] border-[#6BAAFFB2] rounded-full relative backdrop-blur-lg aspect-[1/1]">
-                                            <Image fill alt="" src={"/assets/ceo.png"} className="rounded-full" />
+                                            <Image fill alt={quote.Photo.alternativeText ? quote.Photo.alternativeText : "user"} src={quote.Photo.url} className="rounded-full object-cover "  sizes="(max-width: 640px) 48px, (max-width: 768px) 52px, (max-width: 1024px) 56px, (max-width: 1280px) 59px, 45px" />
                                         </div>
                                         <div className="sm:gap-[4px] flex flex-col justify-between">
                                             <h4 className="text-[#FFFFFF] xl:text-[18px] xl:tracking-[1.8px] lg:text-[17px] lg:tracking-[1.7px] md:text-[16px] md:tracking-[1.6px] sm:text-[15px] sm:tracking-[1.5px] text-[14px] tracking-[1.4px] font-bold leading-[160%]">{quote.fullName}</h4>
