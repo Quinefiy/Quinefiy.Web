@@ -10,7 +10,7 @@ export default function PageWithLoader({ isLoading, children }: { isLoading: boo
 
   useEffect(() => {
     if (!isLoading && isFetching === 0) {
-      initScrollAnimations();
+      initScrollAnimations(false);
     }
   }, [isLoading, isFetching]);
 

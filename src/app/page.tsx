@@ -3,6 +3,7 @@ import HomePageContent from "./HomePageContent";
 import { HydrationBoundary,dehydrate} from "@tanstack/react-query";
 import {getQueryClient} from "@/utils/getQueryClient";
 import { fetchServices, getCaseStudies, getHeroSectionData, getPricingPlans, getProducts } from "@/utils/fetchData";
+// import Particles from "@/components/HeroBackground/Particles";
 
 export default async function Home() {
     const queryClient = getQueryClient();
@@ -17,7 +18,11 @@ export default async function Home() {
 
   return (
     <HydrationBoundary state={dehydratedState}>
+      <div className="relative w-full overflow-hidden">
+
+      {/* <Particles count={110} /> */}
       <HomePageContent />
+      </div>
     </HydrationBoundary>
    
   );

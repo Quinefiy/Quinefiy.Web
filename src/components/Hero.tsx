@@ -4,22 +4,22 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import HeadingCard from "@/components/HeadingCard";
 
-
 export default function Hero({ data }: any) {
 
     return (
-
         <div className="w-full max-w-[1535px] flex md:flex-row flex-col-reverse lg:justify-between justify-center items-center mt-[100px] relative">
-            <div className="bg-[url(/assets/Dots.png)] bg-cover opacity-10 z-[-1] inset-0 absolute "></div>
+            {/* <div className="bg-[url(/assets/Dots.png)] bg-cover opacity-10 z-[-1] inset-0 absolute "></div> */}
             <div className="w-full">
                 <div data-delay="0" className={`opacity-0 animate-left-on-scroll flex flex-col lg:w-auto w-full lg:gap-[24px] md:gap-[16px] sm:gap-[24px] gap-[12px]`}>
                     <HeadingCard text="Best Quality" />
                     <h1 className="text-[#E1E1E1] 2xl:text-[64px] xl:text-[60px] lg:text-[56px] md:text-[40px] sm:text-[48px] text-[32px] font-bold leading-[140%]">{data?.head}</h1>
                     <p className="text-[#FFFFFFD9] 2xl:text-[28px] xl:text-[24px] lg:text-[20px] md:text-[16px] sm:text-[20px] text-[14px] font-medium leading-[150%] 2xl:max-w-[60%] xl:max-w-[450px] lg:max-w-[380px] md:max-w-[78%]" >{data?.subHead}</p>
                     <div className="flex items-center xl:gap-[24px] md:gap-[10px] sm:gap-[18px] gap-[8px] mt-[12px]">
-                        <Link href="/about-us" className="blue-gradient h-[54px] px-[32px] xl:text-[18px] md:text-[14px] sm:text-[16px] text-[14px] font-bold text-[#FFFFFF] rounded-[16px] flex items-center justify-center whitespace-nowrap">Discover More</Link>
-                        <Link href="/contact-us" className="blue-gradient h-[54px] xl:text-[18px] md:text-[14px] sm:text-[16px] text-[14px] font-bold text-[#FFFFFF] rounded-[16px] p-[1px]">
-                            <span className="w-full h-full bg-[#01070F] px-[30px] flex items-center justify-center rounded-[16px] whitespace-nowrap">
+                        <Link href="/about-us" className="blue-gradient h-[54px] p-[2px] xl:text-[18px] md:text-[14px] sm:text-[16px] text-[14px] font-bold text-[#FFFFFF] rounded-[16px] flex items-center justify-center whitespace-nowrap hover:shadow-[0px_0px_15px_0px_#0066FF80]">
+                            <span className="px-[28px] w-full hover:bg-[#01070F] h-full flex justify-center items-center rounded-[16px] duration-500">Discover More</span>
+                        </Link>
+                        <Link href="/contact-us" className=" h-[54px] xl:text-[18px] md:text-[14px] sm:text-[16px] text-[14px] font-bold text-[#FFFFFF] rounded-[16px] p-[2px] contactBtnGradient glow-on-hover relative">
+                            <span className="w-full h-full px-[30px] bg-[#01070F] flex items-center justify-center rounded-[16px] whitespace-nowrap">
                                 Contact Us
                             </span>
                         </Link>

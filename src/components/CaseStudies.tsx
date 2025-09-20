@@ -30,7 +30,10 @@ const CaseStudies = ({ data, showHeader }: Props) => {
                             <h4 className="font-bold text-[#E1E1E1] leading-[140%] lg:text-[18px] text-[16px] mb-[16px]">{c.title}</h4>
                             <p className="font-medium text-[#FFFFFFB2] leading-[140%] lg:text-[16px] text-[14px] line-clamp-5">{c.description}</p>
                         </div>
-                        <Link href={`/case-studies/${slugify(c.title)}-${c.id}`} className="font-medium text-[#0065FF] leading-[140%] lg:text-[16px] text-[14px] self-end">Learn More</Link>
+                        <Link href={`/case-studies/${slugify(c.title)}-${c.id}`} className="font-medium text-[#0065FF] leading-[140%] lg:text-[16px] text-[14px] self-end flex items-center group relative gap-0 hover:gap-[6px]">
+                            <p>Learn More</p>
+                            <Image alt="" width={20} height={10} src="/assets/right-arrow-svgrepo-com.svg" className="w-0 group-hover:w-[20px] transition-all duration-500 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100" />
+                        </Link>
                     </div>
                 ))}
             </div>
