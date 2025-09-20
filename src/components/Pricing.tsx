@@ -52,7 +52,7 @@ const Pricing = ({data, showHeader }: Props) => {
                                 <p className="font-normal text-[#E1E1E1] leading-[140%] 2xl:text-[18px] lg:text-[17px] md:text-[16px] sm:text-[15px] text-[14px] flex items-center gap-[8px]" key={benefit.id}><span>✓</span> {benefit.text}</p>
                             ))}
                         </div>
-                        <button className={`w-full sm:h-[54px] h-[49px] rounded-[12px] ${index === 1 ? "blue-gradient border-0" : "bg-[#66666633] border border-[#FFFFFF33]"} sm:text-[18px]  text-[14px] font-bold text-white cursor-pointer`}>Select Plan</button>
+                        <button className={`w-full sm:h-[54px] h-[49px] rounded-[12px] ${index === 1 ? " border-0 pricingBtnHover hover:shadow-[0px_0px_15px_0px_#0066FF80]  hover:border border-transparent" : "bg-[#66666633] border border-[#FFFFFF33]"} sm:text-[18px]  text-[14px] font-bold text-white cursor-pointer  holographic-card overflow-hidden transition-all duration-500 relative hover:border-[#0B68F480]`}><p className="relative z-[9]">Select Plan</p></button>
                     </div>
                     </div>
                 ))}

@@ -19,13 +19,15 @@
   background: linear-gradient(90deg, #00429B 0%, #6BAAFF 100%);
 }
 
+.contactBtn::before {
+  background: linear-gradient(90deg, #00429B 0%, #6BAAFF 100%);
+}
+
 .dark-gradient {
-  background: 
-    linear-gradient(
-      195deg,
+  background:
+    linear-gradient(195deg,
       rgba(255, 255, 255, 0.2) 7.74%,
-      rgba(210, 229, 255, 0.0625) 92.26%
-    ),
+      rgba(210, 229, 255, 0.0625) 92.26%),
     #01070F;
 }
 
@@ -63,31 +65,143 @@
   background-image: url("/assets/dust.jpg");
   background-repeat: no-repeat;
   background-size: cover;
- 
+
 }
 
 .button-gradient {
   background: linear-gradient(90deg, #00429B 0%, #6BAAFF 100%);
 }
 
-
+.contactBtnGradient{
+  background: linear-gradient(90deg, #00429B 0%, #6BAAFF 100%);
+}
+.contactBtnGradient:hover{
+  background: transparent;
+}
 .border-bottom-gradient {
   border-bottom: 1px solid;
   border-image-source: linear-gradient(90deg, rgba(107, 170, 255, 0.2) 0%, rgba(0, 38, 74, 0.2) 100%);
   border-image-slice: 1;
 }
-.blue-light{
-  background: radial-gradient(50% 50% at 50% 50%,  rgba(0, 101, 255, 0.2) 50%, rgb(1, 7, 15) 100%);
+
+.blue-light {
+  background: radial-gradient(50% 50% at 50% 50%, rgba(0, 101, 255, 0.2) 50%, rgb(1, 7, 15) 100%);
   backdrop-filter: blur(150px);
 }
-.lightBlue-light{
+
+.lightBlue-light {
   background: radial-gradient(50% 50% at 50% 50%, rgba(107, 170, 255, 0.25) 50%, rgb(1, 7, 15) 100%);
   backdrop-filter: blur(150px);
 }
-.hero-light{
-  background: radial-gradient(50% 50% at 50% 50%,  rgba(75, 137, 230, 0.2) 50%, rgb(1, 7, 15) 100%);
+
+.hero-light {
+  background: radial-gradient(50% 50% at 50% 50%, rgba(75, 137, 230, 0.2) 50%, rgb(1, 7, 15) 100%);
   backdrop-filter: blur(150px);
 }
+
+.holographic-card::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -130%;
+  width: 200%;
+  height: 350%;
+  background: linear-gradient(0deg,
+      transparent,
+      #0066FF30 30%,
+      #0066FF80 50%,
+      #0066FF30 70%,
+      transparent);
+  transform: rotate(-45deg);
+  transition: all 0.7s ease;
+  opacity: 0;
+}
+
+.holographic-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #0066FF50;
+}
+
+.holographic-card:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(250%);
+}
+
+.pricingBtnHover {
+  background: linear-gradient(90deg, #00429B 0%, #6BAAFF 100%);
+  transition: all 0.5s ease;
+}
+
+.pricingBtnHover:hover {
+  background: #66666633;
+  transform: scale(1.05);
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #000
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+ 
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+@keyframes shake-scale {
+  0%, 100% {
+    transform: rotate(0) scale(1);
+  }
+  25% {
+    transform: rotate(-20deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(20deg) scale(0.9);
+  }
+  75% {
+    transform: rotate(-10deg) scale(1.05);
+  }
+}
+
+.shake-scale {
+  animation: shake-scale 1.5s ease-in-out infinite;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -205,4 +319,52 @@
   }
 }
 
+.particles-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
  
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: yellow;
+  opacity: 0;
+  pointer-events: none;
+}
+.firefly {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  pointer-events: none;
+  border-radius: 50%;
+  animation: drift infinite ease-in-out;
+}
+
+.firefly .after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,180,1) 0%, rgba(255,255,180,0) 70%);
+  opacity: 0;
+  animation: glow infinite ease-in-out;
+}
+
+/* Firefly glow (fades in/out randomly) */
+@keyframes glow {
+  0%, 30%, 100% { opacity: 0; transform: scale(0.5); }
+  15% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Random drift */
+@keyframes drift {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(20px, -30px); }
+  50%  { transform: translate(-15px, 25px); }
+  75%  { transform: translate(30px, 15px); }
+  100% { transform: translate(0, 0); }
+}

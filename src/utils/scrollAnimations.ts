@@ -1,11 +1,15 @@
 import { animate, inView } from "motion";
 
 
-export const initScrollAnimations = () => {
+export const initScrollAnimations = (skipAnimation: boolean) => {
 
     inView(".animate-left-on-scroll", (el: any) => {
+        if (skipAnimation) {
+            el.classList.remove("opacity-0"); // just show
+            return;
+        }
         animate(el, {
-            x: [ -100 , 0],
+            x: [-100, 0],
             opacity: [0, 1]
         }, {
             duration: 0.6,
@@ -14,6 +18,10 @@ export const initScrollAnimations = () => {
         });
     });
     inView(".animate-right-on-scroll", (el: any) => {
+        if (skipAnimation) {
+            el.classList.remove("opacity-0"); // just show
+            return;
+        }
         animate(el, {
             x: [100, 0],
             opacity: [0, 1]
@@ -24,6 +32,10 @@ export const initScrollAnimations = () => {
         });
     });
     inView(".animate-hero-on-scroll", (el: any) => {
+        if (skipAnimation) {
+            el.classList.remove("opacity-0"); // just show
+            return;
+        }
         animate(el, {
             x: [100, 0],
             opacity: [0, 1]
@@ -34,6 +46,10 @@ export const initScrollAnimations = () => {
         });
     });
     inView(".animate-up-on-scroll", (el: any) => {
+        if (skipAnimation) {
+            el.classList.remove("opacity-0"); // just show
+            return;
+        }
         animate(el, {
             y: [100, 0],
             opacity: [0, 1]
@@ -45,6 +61,10 @@ export const initScrollAnimations = () => {
         });
     });
     inView(".animate-down-on-scroll", (el: any) => {
+        if (skipAnimation) {
+            el.classList.remove("opacity-0"); // just show
+            return;
+        }
         animate(el, {
             y: [-100, 0],
             opacity: [0, 1]
@@ -55,6 +75,10 @@ export const initScrollAnimations = () => {
         });
     });
     inView(".animate-down-rotate-on-scroll", (el: any) => {
+        if (skipAnimation) {
+            el.classList.remove("opacity-0"); // just show
+            return;
+        }
         animate(
             el,
             {
@@ -70,6 +94,10 @@ export const initScrollAnimations = () => {
         );
     });
     inView(".animate-shift-rotate-on-scroll", (el: any) => {
+        if (skipAnimation) {
+            el.classList.remove("opacity-0"); // just show
+            return;
+        }
         animate(
             el,
             {
@@ -85,6 +113,10 @@ export const initScrollAnimations = () => {
         );
     });
     inView(".animate-svg-on-scroll", (el: any) => {
+        if (skipAnimation) {
+            el.classList.remove("opacity-0"); // just show
+            return;
+        }
         animate(
             el,
             {
@@ -99,6 +131,10 @@ export const initScrollAnimations = () => {
         );
     });
     inView(".animate-first-meal-on-scroll", (el: any) => {
+        if (skipAnimation) {
+            el.classList.remove("opacity-0"); // just show
+            return;
+        }
         animate(
             el,
             {
@@ -114,6 +150,10 @@ export const initScrollAnimations = () => {
         );
     });
     inView(".animate-second-meal-on-scroll", (el: any) => {
+        if (skipAnimation) {
+            el.classList.remove("opacity-0"); // just show
+            return;
+        }
         animate(
             el,
             {
@@ -129,6 +169,10 @@ export const initScrollAnimations = () => {
         );
     });
     inView(".animate-third-meal-on-scroll", (el: any) => {
+        if (skipAnimation) {
+            el.classList.remove("opacity-0"); // just show
+            return;
+        }
         animate(
             el,
             {
