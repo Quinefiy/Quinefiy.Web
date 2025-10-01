@@ -1,9 +1,9 @@
 
-import {getProducts, getServicesPageContent } from "@/utils/fetchData";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { getQueryClient } from "@/utils/getQueryClient";
 import ServicesPageContent from "./ServicesPageContent";
 import type { Metadata } from "next";
+import { getServicesPageData } from "@/utils/fetchData";
 
 export const metadata: Metadata = {
   title: "Our Services",
@@ -41,8 +41,7 @@ export default async function Services() {
 
     const queryClient = getQueryClient();
   
-    await queryClient.prefetchQuery({ queryKey: ["software-products"], queryFn: getProducts});
-    await queryClient.prefetchQuery({ queryKey: ["services-page-content"], queryFn: getServicesPageContent});
+    await queryClient.prefetchQuery({ queryKey: ["services-page-content"], queryFn: getServicesPageData});
 
     const dehydratedState = dehydrate(queryClient);
     return (

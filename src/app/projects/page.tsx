@@ -1,7 +1,7 @@
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { getQueryClient } from "@/utils/getQueryClient";
 import ProjectsPageContent from "./ProjectsPageContent";
-import { getProjectsPageContent } from "@/utils/fetchData";
+import {getProjectsPageData } from "@/utils/fetchData";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 export default async function Projects() {
     const queryClient = getQueryClient();
 
-    await queryClient.prefetchQuery({ queryKey: ["projects-page-content"], queryFn: getProjectsPageContent});
+    await queryClient.prefetchQuery({ queryKey: ["projects-page-content"], queryFn: getProjectsPageData});
 
     const dehydratedState = dehydrate(queryClient);
     return (

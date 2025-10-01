@@ -9,20 +9,16 @@ export function useHasLoadedBefore() {
 
   useEffect(() => {
     const key = `hasLoadedOnce:${pathname}`;
+    const alreadyLoaded = sessionStorage.getItem(key) === "true";
 
-    const checkFlag = () => {
-      if (sessionStorage.getItem(key)) {
-        setHasLoadedBefore(true);
-      } else {
-        sessionStorage.setItem(key, "true");
-        setHasLoadedBefore(false);
-      }
-    };
-
-    checkFlag(); // run once when mounted
-
-    document.addEventListener("visibilitychange", checkFlag);
-    return () => document.removeEventListener("visibilitychange", checkFlag);
+    if (alreadyLoaded) {
+      setHasLoadedBefore(true);
+      console.log("yes", key);
+    } else {
+      sessionStorage.setItem(key, "true");
+      setHasLoadedBefore(false);
+      console.log("no", key);
+    }
   }, [pathname]);
 
   return hasLoadedBefore;

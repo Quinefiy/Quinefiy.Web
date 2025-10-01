@@ -1,13 +1,18 @@
 import Link from "next/link";
 
-const StartYourJourney = () => {
+type Props = {
+    heading: boolean;
+    btn: any;
+}
+
+const StartYourJourney = ({heading,btn}: Props) => {
 
     return (
         <div className="opacity-0 animate-up-on-scroll w-full max-w-[1535px] md:py-[96px] py-[72px] 2xl:text-[96px] xl:px-[82px] lg:px-[70px] md:px-[58px] sm:px-[46px] px-[32px] flex flex-col items-center md:gap-[74px] gap-[54px] startCard-gradient  border border-[#6BAAFF4D] rounded-[16px] relative overflow-hidden">
-            <h3 data-delay='0.6' className="opacity-0 animate-down-on-scroll font-bold text-[#E1E1E1] leading-[140%] 2xl:text-[48px] xl:text-[44px] lg:text-[39px] md:text-[34px] sm:text-[29px] text-[24px] text-center max-w-[1100px]">Start your journey now transform your business with AI solutions.</h3>
+            <h3 data-delay='0.6' className="opacity-0 animate-down-on-scroll font-bold text-[#E1E1E1] leading-[140%] 2xl:text-[48px] xl:text-[44px] lg:text-[39px] md:text-[34px] sm:text-[29px] text-[24px] text-center max-w-[1100px]">{heading}</h3>
             <Link data-delay='0.3' href="/contact-us" className="opacity-0 animate-down-on-scroll contactBtnGradient p-[1px] rounded-[12px] glow-on-hover relative">
                 <div className=" px-[32px] py-[16px] bg-[#01132C] rounded-[12px] font-bold text-[#FFFF] leading-[100%] xl:text-[22px] md:text-[18px] text-[14px] flex justify-center items-center gap-[20px]"> 
-                    Contact Us
+                    {btn}
                 </div>
             </Link>
             {/* <Link
