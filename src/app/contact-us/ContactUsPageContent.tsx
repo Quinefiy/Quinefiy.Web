@@ -7,13 +7,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { initScrollAnimations } from "@/utils/scrollAnimations";
 import { useEffect, useState } from "react";
-import { useIsFetching, useMutation, useQuery } from "@tanstack/react-query";
-import { getContactUSPageContent } from "@/utils/fetchData";
-import PageWithLoader from "@/components/ui/PageWithLoader";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import api from "@/lib/api";
 import { motion } from "motion/react";
 import { useHasLoadedBefore } from "@/hooks/useHasLoadedBefore";
+import { getContactUSPageData } from "@/utils/fetchData";
+import AnimatedLogo from "@/components/Loader";
 
 type FormInputs = {
     firstName: string;
@@ -49,22 +49,22 @@ export default function ContactUsPageContent() {
         resolver: yupResolver(schema),
     })
 
-    const { data: pageContent, isLoading: loadingPageContent } = useQuery({ queryKey: ["contact-us-page-content"], queryFn: getContactUSPageContent });
-    const isLoading = loadingPageContent;
-    const isFetching = useIsFetching();
+    const { data, isLoading,isFetched} = useQuery({ queryKey: ["contact-us-page-content"], queryFn: getContactUSPageData });
+ 
     const hasLoadedBefore = useHasLoadedBefore();
 
     useEffect(() => {
-        if (!isLoading && isFetching === 0) {
-            if (!hasLoadedBefore) {
-                initScrollAnimations(false);
-            } else {
-                initScrollAnimations(true);
+            if (!isLoading && isFetched) {
+                if (!hasLoadedBefore) {
+                    console.log("dfdacscaa")
+                    initScrollAnimations(false); // very first time
+                } else {
+                    initScrollAnimations(true); // subsequent times
+                }
             }
-        }
-    }, [isLoading, isFetching, hasLoadedBefore]);
-
-    const { mutate, isPending } = useMutation({
+        }, [isLoading, isFetched, hasLoadedBefore]);
+        
+        const { mutate, isPending } = useMutation({
         mutationFn: (data: ContactInfo) => {
             return api.post("/contact-submissions", data)
         },
@@ -88,11 +88,17 @@ export default function ContactUsPageContent() {
                 message: data.message
             }
         }
-
+        
         mutate(contactData)
     };
+    
+    
+    
+        if (!isFetched || isLoading) {
+            return <AnimatedLogo />;
+        }
 
-    const content = (
+    return (
         <div className=" w-full flex justify-center 2xl:px-[96px] xl:px-[52px] lg:px-[36px] md:px-[21px] sm:px-[19px] px-[16px] sm:overflow-x-clip relative">
             {showReceivedToast && <motion.div
                 initial={{ x: 600 }}
@@ -103,10 +109,10 @@ export default function ContactUsPageContent() {
                 <div className="flex flex-col items-center lg:w-auto !w-full lg:gap-[24px] md:gap-[22px] gap-[20px] 2xl:mt-[200px] xl:mt-[170px] md:mt-[150px] mt-[140px] relative">
                     <div className="bg-[url(/assets/contact-us-bg.svg)] z-[-1] w-full bg-no-repeat  lg:bg-cover bg-contain bg-center absolute xl:top-[35%] lg:top-[45%] md:top-[55%] top-[65%] left-[0px] right-[0px] lg:bottom-[-45%] md:bottom-[-55%] bottom-[-65%] md:opacity-60 opacity-40"></div>
                     <div data-delay='0.4' className="opacity-0 animate-down-on-scroll"><HeadingCard text="Contact Us" /></div>
-                    <h1 data-delay='0.2' className="opacity-0 animate-down-on-scroll text-[#E1E1E1] 2xl:text-[48px] xl:text-[42px] lg:text-[36px] md:text-[30px] sm:text-[24px] text-[20px] font-bold leading-[140%]">Get In Touch With</h1>
-                    <p data-delay='0' className="opacity-0 animate-down-on-scroll text-[#FFFFFFD9] tracking-[1.8px] xl:text-[18px] lg:text-[17px] md:text-[16px] sm:text-[15px] text-[14px] font-medium leading-[160%] lg:max-w-[800px] sm:max-w-[85%] text-center">With seamless integrations, businesses can connect various software tools ranging from project management and CRM systems to accounting</p>
+                    <h1 data-delay='0.2' className="opacity-0 animate-down-on-scroll text-[#E1E1E1] 2xl:text-[48px] xl:text-[42px] lg:text-[36px] md:text-[30px] sm:text-[24px] text-[19px] font-bold leading-[140%] text-center">{data?.getInTouch.heading}</h1>
+                    <p data-delay='0' className="opacity-0 animate-down-on-scroll text-[#FFFFFFD9] tracking-[1.8px] xl:text-[18px] lg:text-[17px] md:text-[16px] sm:text-[15px] text-[14px] font-medium leading-[160%] lg:max-w-[750px] sm:max-w-[83%] text-center">{data?.getInTouch.subHeading}</p>
                     <div className="flex sm:flex-row flex-col xl:flex-nowrap flex-wrap items-center w-full sm:gap-[24px] gap-[20px] mt-[40px] justify-center">
-                        {pageContent?.contactInfo.map((info: any, index: number) => (
+                        {data?.getInTouch.contactInfo.map((info: any, index: number) => (
                             <div data-delay={index * 0.3} className={`opacity-0 animate-up-on-scroll sm:flex-1 max-w-[558px]  w-full`} key={info.id}>
                                 <div className={`w-full productCard-gradient py-[48px] px-[32px] rounded-[16px] relative border border-[#6BAAFF4D] overflow-hidden transition-transform hover:translate-y-[-30px] duration-500`} >
                                     {/* <div className="absolute top-0 left-0 bottom-0 right-0 bg-[url(/assets/dust.png)] z-10 bg-cover">
@@ -114,8 +120,8 @@ export default function ContactUsPageContent() {
                                     <div className="w-[52.5px] h-[52.5px] rounded-full flex items-center justify-center mb-[32px] border-[0.75px] border-[#FFFFFF1A]">
                                         <Image width={21} height={18} alt={info.icon.alternativeText} src={info.icon.url} />
                                     </div>
-                                    <h4 className="2xl:text-[22px] lg:text-[20px] sm:text-[18px] text-[16px] text-[#E1E1E1] font-bold mb-[12px]  leading-[160%] ">{info.title}</h4>
-                                    <p className="2xl:text-[16px] lg:text-[14.5px] sm:text-[13px] text-[12px] text-[#FFFFFFD9] font-medium leading-[160%]">{info.body}</p>
+                                    <h4 className="2xl:text-[22px] lg:text-[20px] sm:text-[18px] text-[16px] text-[#E1E1E1] font-bold mb-[12px]  leading-[160%] ">{info.contactName}</h4>
+                                    <p className="2xl:text-[16px] lg:text-[14.5px] sm:text-[13px] text-[12px] text-[#FFFFFFD9] font-medium leading-[160%]">{info.description}</p>
                                 </div>
                             </div>
                         ))}
@@ -123,7 +129,7 @@ export default function ContactUsPageContent() {
                 </div>
                 <div className=" flex flex-col items-center lg:w-auto !w-full lg:gap-[24px] md:gap-[22px] gap-[20px]">
                     <div data-delay='0.2' className="opacity-0 animate-down-on-scroll"><HeadingCard text="Send a Message" /></div>
-                    <h1 data-delay='0' className="opacity-0 animate-down-on-scroll text-[#E1E1E1] 2xl:text-[48px] 2xl:tracking-[4.8px] xl:text-[42px] xl:tracking-[4.2px] lg:text-[36px] lg:tracking-[3.6px] md:text-[30px] md:tracking-[3px] sm:text-[24px] sm:tracking-[2.4px] text-[20px] tracking-[2px] font-bold leading-[140%] sm:max-w-[70%] max-w-[95%] text-center">Get in touch with us for more information</h1>
+                    <h1 data-delay='0' className="opacity-0 animate-down-on-scroll text-[#E1E1E1] 2xl:text-[48px] 2xl:tracking-[4.8px] xl:text-[42px] xl:tracking-[4.2px] lg:text-[36px] lg:tracking-[3.6px] md:text-[30px] md:tracking-[3px] sm:text-[24px] sm:tracking-[2.4px] text-[20px] tracking-[2px] font-bold leading-[140%] sm:max-w-[70%] max-w-[95%] text-center">{data?.formHeading}</h1>
                     <form className="opacity-0 animate-up-on-scroll w-full xl:max-w-[936px] lg:max-w-[860px] max-w-[730px] flex flex-col xl:gap-[48px] lg:gap-[38px] md:gap-[28px] gap-[24px] 2xl:mt-[64px] xl:mt-[58px] lg:mt-[45px] md:mt-[36px] sm:mt-[25px] mt-[12px]" onSubmit={handleSubmit(onSubmit)}>
                         <div className="flex sm:flex-row flex-col gap-[24px] w-full">
                             <div className="flex-1 flex flex-col xl:gap-[24px] md:gap-[20px] gap-[16px]">
@@ -162,11 +168,6 @@ export default function ContactUsPageContent() {
             {/* <StartYourJourney /> */}
         </div>
     );
-    if (hasLoadedBefore) {
-        return content;
-    }
-
-    return <PageWithLoader isLoading={isLoading}>{content}</PageWithLoader>;
 }
 
 

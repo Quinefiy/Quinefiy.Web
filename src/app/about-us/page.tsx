@@ -1,8 +1,8 @@
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { getQueryClient } from "@/utils/getQueryClient";
 import AboutUsPageContent from "./AboutUsPageContent";
-import { getAboutUsPageContent } from "@/utils/fetchData";
 import type { Metadata } from "next";
+import { getAboutUsPageData } from "@/utils/fetchData";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 export default async function AboutUs() {
   const queryClient = getQueryClient();
 
-  await queryClient.prefetchQuery({ queryKey: ["about-us-page-content"], queryFn: getAboutUsPageContent});
+  await queryClient.prefetchQuery({ queryKey: ["about-us-page-data"], queryFn: getAboutUsPageData});
 
   const dehydratedState = dehydrate(queryClient);
   return (

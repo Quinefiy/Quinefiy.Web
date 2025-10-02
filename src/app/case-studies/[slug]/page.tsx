@@ -1,6 +1,7 @@
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { getQueryClient } from "@/utils/getQueryClient";
 import CaseStudyPageContent from "./CaseStudyPageContent";
+import { fetchCaseStudyBySlug } from "@/utils/fetchData";
 // import { Metadata } from "next";
 // import { getCaseStudyBySlug } from "@/utils/fetchData";
 
@@ -43,15 +44,24 @@ import CaseStudyPageContent from "./CaseStudyPageContent";
 //   };
 // }
 
-export default async function CaseStudyPage() {
-    const queryClient = getQueryClient();
+export default async function CaseStudyPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  const queryClient = getQueryClient();
 
-    // await queryClient.prefetchQuery({queryKey: ["cases-studies"], queryFn: getCaseStudies});
+  await queryClient.prefetchQuery({
+    queryKey: ["case-study", slug],
+    queryFn: () => fetchCaseStudyBySlug(slug),
+  });
 
-    const dehydratedState = dehydrate(queryClient);
-    return (
-        <HydrationBoundary state={dehydratedState}>
-            <CaseStudyPageContent />
-        </HydrationBoundary>
-    );
+  const dehydratedState = dehydrate(queryClient);
+
+  return (
+    <HydrationBoundary state={dehydratedState}>
+      <CaseStudyPageContent slug={slug} />
+    </HydrationBoundary>
+  );
 }

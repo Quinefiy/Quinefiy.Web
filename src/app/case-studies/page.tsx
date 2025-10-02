@@ -1,7 +1,7 @@
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { getQueryClient } from "@/utils/getQueryClient";
 import CaseStudiesPageContent from "./CaseStudiesContent";
-import { getCaseStudies } from "@/utils/fetchData";
+import { getCaseStudiesPageData } from "@/utils/fetchData";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default async function CaseStudiesPage() {
     const queryClient = getQueryClient();
 
-    await queryClient.prefetchQuery({queryKey: ["cases-studies"], queryFn: getCaseStudies});
+    await queryClient.prefetchQuery({queryKey: ["cases-studies-page-content"], queryFn: getCaseStudiesPageData});
 
     const dehydratedState = dehydrate(queryClient);
     return (

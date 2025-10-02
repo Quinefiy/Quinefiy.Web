@@ -1,6 +1,6 @@
 "use client";
 
-import api from "@/lib/api";
+import { fetchFooterData } from "@/utils/fetchData";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
@@ -48,13 +48,10 @@ const Footer = () => {
         ]
     }
 
-    const getSocialMedia = async () => {
-        return await api.get('/social-medias?populate=*').then(res => res.data.data)
-    }
-    const { data} = useQuery({ queryKey: ['social-media-list'], queryFn: getSocialMedia })
+    const { data} = useQuery({ queryKey: ['footer-data'], queryFn: fetchFooterData })
 
     return (
-        <div className="mt-[150px] flex flex-col items-center border-t-[1px] border-[#6BAAFF1A] pt-[64px] 2xl:px-[96px] xl:px-[52px] lg:px-[36px] md:px-[24px] sm:px-[20px] px-[16px] relative overflow-hidden">
+          <div className="mt-[150px] flex flex-col items-center border-t-[1px] border-[#6BAAFF1A] pt-[64px] 2xl:px-[96px] xl:px-[52px] lg:px-[36px] md:px-[24px] sm:px-[20px] px-[16px] relative overflow-hidden">
             <div className="w-full max-w-[1535px] flex md:flex-row flex-col md:justify-between md:items-center  md:gap-[20%] gap-[48px] pb-[48px] relative">
                 <div data-delay='0' className="opacity-0 animate-down-on-scroll">
                     <div className="relative xl:w-[152px] lg:w-[142px] md:w-[126px] w-[122px] h-auto aspect-[152/40]">
@@ -68,12 +65,12 @@ const Footer = () => {
                         />
                     </div>
 
-                    <p className="font-medium text-white leading-[150%] mt-[24px] mb-[48px] max-w-[489px] lg:text-[18px] sm:text-[16px] text-[14px]">“Your reliable partner in digital transformation , giving you confidence in comlex Quniefiy projects”</p>
-                    <div className="flex items-center gap-[12px]">{data?.map((m: any) => (
-                        <a href={m.URL} className="relative w-[20px] h-auto aspect-[20/20]" key={m.id}>
+                    <p className="font-medium text-white leading-[150%] mt-[24px] mb-[48px] max-w-[489px] lg:text-[18px] sm:text-[16px] text-[14px]">{data?.description}</p>
+                    <div className="flex items-center gap-[12px]">{data?.media?.map((m: any) => (
+                        <a href={m.link} className="relative w-[20px] h-auto aspect-[20/20]" key={m.id}>
                             <Image
-                                src={m.Icon[0].url}
-                                alt={m.Icon[0].alternativeText}
+                                src={m.icon.url}
+                                alt={m.icon.alternativeText}
                                 fill
                                 className="object-contain"
                                 priority
@@ -97,7 +94,7 @@ const Footer = () => {
                 <div className="absolute bottom-0 left-0 w-full h-[0.8px] bg-gradient-to-r from-transparent via-[#00264A] to-transparent"></div>
             </div>
             <div data-delay='0' className="opacity-0 animate-up-on-scroll w-full">
-                <p className="font-medium text-white leading-[150%] my-[48px] text-center md:text-[16px] text-[14px]">© Copyright 2025, All Rights Reserved</p>
+                <p className="font-medium text-white leading-[150%] my-[48px] text-center md:text-[16px] text-[14px]">{data?.copyright}</p>
             </div>
             <div className="absolute h-full w-full bottom-[-65%] left-0 right-0  z-[-1] blue-light"></div>
         </div>

@@ -1,6 +1,6 @@
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { getQueryClient } from "@/utils/getQueryClient";
-import { getContactUSPageContent} from "@/utils/fetchData";
+import { getContactUSPageData} from "@/utils/fetchData";
 import ContactUsPageContent from "./ContactUsPageContent";
 import type { Metadata } from "next";
 
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 export default async function ContactUs() {
   const queryClient = getQueryClient();
 
-  await queryClient.prefetchQuery({ queryKey: ["contact-us-page-content"], queryFn: getContactUSPageContent });
+  await queryClient.prefetchQuery({ queryKey: ["contact-us-page-content"], queryFn: getContactUSPageData });
 
   const dehydratedState = dehydrate(queryClient);
   return (

@@ -1,8 +1,8 @@
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { getQueryClient } from "@/utils/getQueryClient";
 import PricingPageContent from "./PricingPageContent";
-import { getPricingPlans } from "@/utils/fetchData";
 import type { Metadata } from "next";
+import { getPricingPageData } from "@/utils/fetchData";
 
 export const metadata: Metadata = {
   title: "Pricing Plans",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 export default async function PricingPage() {
     const queryClient = getQueryClient();
 
-    await queryClient.prefetchQuery({queryKey: ["pricing-palns"], queryFn: getPricingPlans});
+    await queryClient.prefetchQuery({queryKey: ["pricing-page-content"], queryFn: getPricingPageData});
 
     const dehydratedState = dehydrate(queryClient);
     return (

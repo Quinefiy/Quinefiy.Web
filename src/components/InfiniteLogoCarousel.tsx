@@ -16,9 +16,11 @@ const logos = [
  
     { id: 9, src: "/assets/owner-Logo.png" }
   ]
-
-export default function InfiniteSlider() {
-  const duplicatedLogos = [...logos, ...logos]; 
+type Props = {
+    data: any;
+}
+export default function InfiniteSlider({data}: Props) {
+  const duplicatedLogos = [...data?.logos, ...data?.logos,...data?.logos]; 
   const slideWidth = 77; // px
   const totalWidth = duplicatedLogos.length * slideWidth;
   const animationDuration = `${logos.length * 2}s`; // e.g., 7 * 4 = 28s
@@ -38,7 +40,7 @@ export default function InfiniteSlider() {
       </style>
 
       <div
-        className="slide-track flex   "
+        className="slide-track flex   justify-center"
         style={{
           width: `${totalWidth}px`,
           animation: `scroll ${animationDuration} linear infinite`,
