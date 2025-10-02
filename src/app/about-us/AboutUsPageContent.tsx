@@ -82,7 +82,7 @@ export default function AboutUsPageContent() {
                     </div>
                     <h2 data-delay='0.2' className="opacity-0 animate-down-on-scroll text-[#E1E1E1] 2xl:text-[32px] 2xl:tracking-[3.2px] xl:text-[28px] xl:tracking-[2.8px] lg:text-[26px] lg:tracking-[2.6px] md:text-[24px] md:tracking-[2.4px] sm:text-[22px] sm:tracking-[2.2px] text-[18px] tracking-[1.8px] font-bold leading-[140%] max-w-[767px] text-center">{data?.team.heading}</h2>
                     <p data-delay='0' className="opacity-0 animate-down-on-scroll text-[#FFFFFFD9] tracking-[1.8px] xl:text-[18px] lg:text-[17px] md:text-[16px] sm:text-[15px] text-[14px] font-medium leading-[160%] lg:max-w-[850px] sm:max-w-[83%] text-center">{data?.team.subHeading}</p>
-                    <div className="w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-[24px] xl:mt-[40px] lg:mt-[34px] md:mt-[28px] sm:mt-[20px] mt-[12px]">
+                    <div className="w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-[24px] xl:mt-[40px] lg:mt-[34px] md:mt-[28px] sm:mt-[20px] mt-[12px]">
                         {data?.team?.teamMemebers.map((member: any, index: number) => (
                             <div data-delay={index * 0.3} className="opacity-0 animate-up-on-scroll max-w-[324px] mx-auto w-full flex flex-col gap-[24px]" key={member.id}>
                                 <div className="w-full border-[0.7px] border-[#6BAAFFB2] rounded-[16px] relative backdrop-blur-lg aspect-[324/369] overflow-hidden">

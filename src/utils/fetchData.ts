@@ -1,7 +1,7 @@
 import api from "@/lib/api"
 
 export async function getHomePageData() {
-  return await api.get("/home-page?populate[hero][populate]=*&populate[partners][populate]=*&populate[softwareProducts][populate]=*&populate[ourServices][populate][services][populate]=icon&populate[pricing][populate][pricingPlans][populate]=benefits&populate[ourCaseStudies][populate][case_studies][populate]=*&populate[startYourJourney][populate]=*").then(res => res.data.data)
+  return await api.get("/home-page?populate[hero][populate]=*&populate[partners][populate]=*&populate[softwareProducts][populate][products][populate]=*&populate[ourServices][populate][services][populate]=icon&populate[pricing][populate][pricingPlans][populate]=benefits&populate[ourCaseStudies][populate][case_studies][populate]=*&populate[startYourJourney][populate]=*").then(res => res.data.data)
 }
 export async function getAboutUsPageData() {
   return await api.get("/about-us-page?populate[AboutUsHero][populate]=*&populate[manageBusiness][populate][ceo][populate]=*&populate[manageBusiness][populate][vision][populate]=*&populate[team][populate][teamMemebers][populate]=photo&populate[ourUsers][populate][usersQuotes][populate]=*&populate[startYourJourney][populate]=*").then(res => res.data.data)

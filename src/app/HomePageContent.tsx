@@ -49,7 +49,7 @@ export default function HomePageContent() {
         <h3 className="text-[#999999] font-semibold xl:text-[18px] md:text-[17px] sm:text-[15px] text-[13px] text-center">
           Trusted by 10,000+ founders & business owners
         </h3>
-        <InfiniteSlider />
+        <InfiniteSlider data={data?.partners} />
       </div>
       <OurServices data={data?.ourServices} />
       <Pricing data={data?.pricing} showHeader={true} />

@@ -33,10 +33,10 @@ export default function ServicesPageContent() {
 
     return (
         <div className=" w-full flex justify-center 2xl:px-[96px] xl:px-[52px] lg:px-[36px] md:px-[21px] sm:px-[19px] px-[16px] relative">
-            <div className="absolute h-[50vh] w-full top-[-3%] left-0 right-0 z-[-1] blue-light opacity-30"></div>
+            <div className="absolute h-[50vh] w-full top-[-2%] left-0 right-0 z-[-1] blue-light opacity-30"></div>
             <div className="w-full max-w-[1535px] flex flex-col xl:gap-[150px] md:gap-[140px] sm:gap-[100px] gap-[65px] items-center">
                 <div className=" relative flex flex-col items-center lg:w-auto !w-full lg:gap-[24px] md:gap-[22px] gap-[20px] 2xl:mt-[200px] xl:mt-[170px] md:mt-[150px] mt-[140px]">
-                    <div className="absolute inset-0 bottom-[-350px] bg-[url(/assets/freepik__adjust__5124.png)] bg-cover bg-center bg-no-repeat opacity-3 z-[-1]"></div>
+                    <div className="absolute inset-0 bottom-[-350px] top-[-100px] bg-[url(/assets/freepik__adjust__5124.png)] bg-cover bg-center bg-no-repeat opacity-3 z-[-1]"></div>
                     <div data-delay='0.6' className="opacity-0 animate-down-on-scroll"><HeadingCard text="Our Services" /></div>
                     <h1 data-delay='0.4' className="opacity-0 animate-down-on-scroll text-[#E1E1E1] 2xl:text-[32px] 2xl:tracking-[3.2px] xl:text-[28px] xl:tracking-[2.8px] lg:text-[26px] lg:tracking-[2.6px] md:text-[24px] md:tracking-[2.4px] sm:text-[22px] sm:tracking-[2.2px] text-[18px] tracking-[1.8px] font-bold leading-[140%] max-w-[767px] text-center">{data?.servicesHero.heading}</h1>
                     <p data-delay='0.2' className="opacity-0 animate-down-on-scroll text-[#FFFFFFD9] tracking-[1.8px] xl:text-[18px] lg:text-[17px] md:text-[16px] sm:text-[15px] text-[14px] font-medium leading-[160%] lg:max-w-[890px] sm:max-w-[85%] text-center">{data?.servicesHero.subheading}</p>

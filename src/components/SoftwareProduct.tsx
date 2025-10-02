@@ -35,7 +35,7 @@ const SoftwareProduct = ({ showHeader, data }: Props) => {
         //     <div className="blue-light opacity-65 absolute w-[550px] h-[200px] left-[0px] top-[50%] z-[-1]"></div>
         // </div>
 
-        <div className="w-full max-w-[1300px] relative  flex justify-center mb-[36px]">
+        <div className={`w-full max-w-[1300px] relative  flex justify-center mb-[50px] ${showHeader ? "" : "sm:mt-[150px] mt-[50px]"}`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src='/assets/software-bg.svg' className="w-[90%] max-w-[1189px] md:flex hidden" />
             <div className="md:hidden absolute inset-0 bg-[url('/assets/sw-products-bg-res.svg')] bg-center z-[-1]"></div>
@@ -46,12 +46,12 @@ const SoftwareProduct = ({ showHeader, data }: Props) => {
                     <h2 className="text-[#E1E1E1] 2xl:text-[36px] xl:text-[32px] lg:text-[28px] md:text-[24px] sm:text-[20px] text-[18px] font-bold leading-[160%]">{data?.heading}</h2>
                     <p className="text-[#FFFFFFD9] xl:text-[18px] lg:text-[17px] md:text-[16px] sm:text-[15px] text-[14px] font-medium leading-[160%] max-w-[690px] text-center">{data?.subHeading}</p>
                 </div>
-                {data.products.map((product: any, index: number) => (
+                {data?.products.map((product: any, index: number) => (
                     <div className={` md:absolute ${index === 0 ? "xl:right-[50px] right-0 top-1/4 opacity-0 animate-right-on-scroll" : index === 1 ? "xl:right-[50px] right-0 bottom-1/4 opacity-0 animate-right-on-scroll" : index === 2 ? "xl:left-[50px] left-0 top-1/4 opacity-0 animate-left-on-scroll" : index === 3 ? "xl:left-[50px] left-0 bottom-1/4  opacity-0 animate-left-on-scroll" : "mx-auto bottom-0  lg:max-w-[560px] md:max-w-[480px] max-w-[380px]  opacity-0 animate-up-on-scroll"} `} key={product.id}>
                         <div className="transition-transform hover:translate-y-[-30px] duration-500 relative  flex flex-col items-center" >
                             <div className=" shadow-[0px_0px_15px_0px_#13397380] md:shadow-[0px_0px_15px_0px_#13335980] bg-[linear-gradient(0deg,rgba(0,38,74,0)_0%,rgba(0,101,255,0.12)_100%)] backdrop-blur-xl xl:mb-[22px] lg:mb-[20px] md:mb-[18px] sm:mb-[16px] mb-[14px] flex justify-center items-center xl:w-[78px] xl:h-[78px] lg:w-[70px] lg:h-[70px] md:w-[64px] md:h-[64px] w-[82px] h-[82px] rounded-full  md:border-0 border-[0.5px] border-[#19335980] ">
                                 <div className="relative aspect-[55/55] xl:w-[46px] lg:w-[42px] md:w-[38px] w-[52px] ">
-                                <Image fill src='/assets/software.png' alt="" className="" sizes=" (max-width: 768px) 38px, (max-width: 1024px) 42px, (max-width: 1280px) 46px, 52px" />
+                                <Image fill src={product.icon.url} alt={product.icon.alternativeText} className="" sizes=" (max-width: 768px) 38px, (max-width: 1024px) 42px, (max-width: 1280px) 46px, 52px" />
                                 </div>    
                             </div>
                             <h4 className="2xl:text-[22px] lg:text-[20px] md:text-[16px] text-[18px] text-[#E1E1E1] font-bold mb-[12px]  leading-[160%] ">{product.title}</h4>

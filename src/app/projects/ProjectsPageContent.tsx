@@ -51,7 +51,7 @@ export default function ProjectsPageContent() {
                         <Carousel >
                             <CarouselPrevious />
                             <CarouselNext />
-                            <CarouselContent className="">
+                            <CarouselContent className="mt-[24px]">
                                 {data?.projects?.map((project: any) => (
                                     <CarouselItem className="md:basis-1/2 xl:min-w-[73%] lg:min-w-[80%] md:min-w-[85%] w-full " key={project.id}>
                                         <div className=" sm:w-full sm:max-w-full max-w-[385px] w-[77%] sm:mx-0 mx-auto flex sm:flex-row flex-col border border-[#6BAAFF4D] rounded-[16px] overflow-hidden">

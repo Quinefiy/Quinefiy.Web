@@ -13,11 +13,6 @@ import Image from "next/image";
 const OurServices = ({ data }: any) => {
     const [slidesToScroll, setSlidesToScroll] = useState(4)
 
-    // const getServices = async () => {
-    //     return await api.get('/services?populate=*').then(res => res.data.data)
-    // }
-    // const { data, isSuccess, isLoading } = useQuery({ queryKey: ['services-list'], queryFn: getServices })
-
     useEffect(() => {
         const updateSlidesToScroll = () => {
             const width = window.innerWidth
@@ -26,7 +21,6 @@ const OurServices = ({ data }: any) => {
             else if (width < 1024) setSlidesToScroll(3)
             else setSlidesToScroll(4)
         }
-
         updateSlidesToScroll()
         window.addEventListener("resize", updateSlidesToScroll)
         return () => window.removeEventListener("resize", updateSlidesToScroll)
@@ -51,7 +45,7 @@ const OurServices = ({ data }: any) => {
                                             <div className="!min-h-full serviceCard-gradient lg:py-[52px] sm:py-[46px] py-[41px] sm:px-[32px] px-[28px] rounded-[16px] border border-[#6BAAFF4D] cursor-pointer [backface-visibility:hidden] relative overflow-hidden">
                                                 <div className=" absolute inset-0 bg-[url(/assets/pngwing.com.png)] bg-cover z-[-99] bg-no-repeat opacity-10 rotate-[-45deg] "></div>
                                                 <div className="lg:w-[52px] sm:w-[46px] w-[42px] relative aspect-[1/1]">
-                                                    <Image fill src="/assets/development.png" alt={service.icon.alternativeText} className="" sizes="(max-width: 640px) 46px, (max-width: 1024px) 52px, 42px" />
+                                                    <Image fill src={service.icon.url} alt={service.icon.alternativeText} className="" sizes="(max-width: 640px) 46px, (max-width: 1024px) 52px, 42px" />
                                                 </div>
                                                 <h3 className="2xl:text-[22px] lg:text-[20px] sm:text-[18px] text-[16px] text-[#E1E1E1] font-bold mb-[12px]  leading-[160%] xl:mt-[48px] lg:mt-[40px] md:mt-[36px] sm:mt-[30px] mt-[24px]">
                                                     {service.title}
@@ -63,7 +57,6 @@ const OurServices = ({ data }: any) => {
                                                     Show More
                                                 </h3>
                                             </Link>
-
                                         </div>
                                     </div>
                                 </CarouselItem>

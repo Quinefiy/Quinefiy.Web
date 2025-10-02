@@ -15,7 +15,7 @@ const CaseStudies = ({ data, showHeader }: Props) => {
             {showHeader &&
                 <div className="flex flex-col items-center gap-[24px] 2xl:mb-[64px] xl:mb-[58px] lg:mb-[50px] md:mb-[44px] sm:mb-[38px] mb-[32px]">
                     <div data-delay='0.2' className="opacity-0 animate-down-on-scroll"><HeadingCard text="Case Studies" /></div>
-                    <h2 className="opacity-0 animate-down-on-scroll  text-[#E1E1E1] 2xl:text-[36px] xl:text-[32px] lg:text-[28px] md:text-[24px] sm:text-[20px] text-[18px] font-bold leading-[160%]">{data?.head}</h2>
+                    <h2 className="opacity-0 animate-down-on-scroll  text-[#E1E1E1] 2xl:text-[36px] xl:text-[32px] lg:text-[28px] md:text-[24px] sm:text-[20px] text-[18px] font-bold leading-[160%]">{data?.heading}</h2>
                 </div>
             }
 
