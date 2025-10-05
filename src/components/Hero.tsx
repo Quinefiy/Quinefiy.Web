@@ -25,7 +25,7 @@ export default function Hero({ data }: any) {
                                 <p className="bg-gradient-to-l from-[#6BAAFF] to-[#DAEAFF] bg-clip-text text-transparent flex flex-col items-center justify-center">
                                     <span className="flex items-center lg:gap-[5px] gap-[3px]">Let’s 
                                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                                        <img src="/assets/contact-papper.svg" className="2xl:w-[25px] xl:w-[20px] lg:w-[18px] w-[14px]" /></span>
+                                        <img src="/assets/contact-papper.svg" className="2xl:w-[25px] xl:w-[20px] lg:w-[18px] w-[14px]" alt="design image" /></span>
                                     <span>Contact</span>
                                 </p>
                             </span>
@@ -180,7 +180,7 @@ export default function Hero({ data }: any) {
                         fill
                         alt=""
                         className="object-contain "
-
+                        priority
                     />
                 </div>
             </div>

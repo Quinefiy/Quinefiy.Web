@@ -37,7 +37,7 @@ const SoftwareProduct = ({ showHeader, data }: Props) => {
 
         <div className={`w-full max-w-[1300px] relative  flex justify-center mb-[50px] ${showHeader ? "" : "sm:mt-[150px] mt-[50px]"}`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src='/assets/software-bg.svg' className="w-[90%] max-w-[1189px] md:flex hidden" />
+            <img src='/assets/software-bg.svg' alt="design image" className="w-[90%] max-w-[1189px] md:flex hidden" />
             <div className="md:hidden absolute inset-0 bg-[url('/assets/sw-products-bg-res.svg')] bg-center z-[-1]"></div>
 
             <div className="md:absolute !w-full inset-0 flex flex-col gap-[52px] justify-between  items-center">
@@ -106,7 +106,7 @@ const SoftwareProduct = ({ showHeader, data }: Props) => {
 
             </div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src='/assets/q.svg' className="absolute md:inset-0 top-[46.5%] m-auto md:w-[14%] w-[70px] md:opacity-60 opacity-20 z-[-1]" />
+            <img src='/assets/q.svg' alt="design image" className="absolute md:inset-0 top-[46.5%] m-auto md:w-[14%] w-[70px] md:opacity-60 opacity-20 z-[-1]" />
         </div>
     )
 }

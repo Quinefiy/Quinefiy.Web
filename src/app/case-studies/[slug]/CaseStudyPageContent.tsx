@@ -27,9 +27,9 @@ export default function CaseStudyPageContent({ slug }: { slug: string }) {
         if (!isLoading && isFetched) {
             if (!hasLoadedBefore) {
                 console.log("dfdacscaa")
-                initScrollAnimations(false); // very first time
+                initScrollAnimations(false);  
             } else {
-                initScrollAnimations(true); // subsequent times
+                initScrollAnimations(true); 
             }
         }
     }, [isLoading, isFetched, hasLoadedBefore]);
