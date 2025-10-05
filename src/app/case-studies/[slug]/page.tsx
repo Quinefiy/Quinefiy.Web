@@ -8,7 +8,15 @@ import { fetchCaseStudyBySlug } from "@/utils/fetchData";
 // export async function generateMetadata(
 //   { params }: { params: { slug: string } }
 // ): Promise<Metadata> {
-//   const caseStudy = await getCaseStudyBySlug(params.slug);
+//   const { slug } = params;
+
+//   const res = await fetch(
+//     `${process.env.NEXT_PUBLIC_STRAPI_UR}/case-studies?filters[slug][$eq]=${slug}&populate=*`,
+//     { cache: "no-store" }
+//   );
+
+//   const data = await res.json();
+//   const caseStudy = data.data[0];
 
 //   if (!caseStudy) {
 //     return {
@@ -19,30 +27,68 @@ import { fetchCaseStudyBySlug } from "@/utils/fetchData";
 
 //   return {
 //     title: `${caseStudy.title} | Case Study | Quinefiy`,
-//     description: caseStudy.excerpt || caseStudy.summary || 
+//     description:
+//       caseStudy.excerpt ||
+//       caseStudy.summary ||
 //       "Discover how Quinefiy helped businesses with AI, software development, and IT solutions.",
-//     keywords: [
-//       "Quinefiy case study",
-//       "software development success",
-//       "AI project",
-//       caseStudy.title,
-//       ...(caseStudy.tags || []), // if your API returns tags
-//     ],
 //     openGraph: {
 //       title: `${caseStudy.title} | Quinefiy Case Study`,
 //       description: caseStudy.excerpt || caseStudy.summary,
-//       url: `https://quinefiy.com/case-studies/${params.slug}`,
+//       // url: `https://quinefiy.com/case-studies/${slug}`,
 //       siteName: "Quinefiy",
-//       images: [
-//         {
-//           url: caseStudy.image || "https://quinefiy.com/case-studies-og.jpg",
-//           alt: caseStudy.title,
-//         },
-//       ],
+//       // images: [
+//       //   {
+//       //     url: caseStudy.image || "https://quinefiy.com/case-studies-og.jpg",
+//       //     alt: caseStudy.title,
+//       //   },
+//       // ],
 //       type: "article",
 //     },
 //   };
 // }
+
+// export async function generateMetadata(
+//   { params }: { params: { slug: string } }
+// ): Promise<Metadata> {
+//   const { slug } = params;
+
+//   const res = await fetch(
+//     `${process.env.NEXT_PUBLIC_STRAPI_URL}/case-studies?filters[slug][$eq]=${slug}&populate=*`,
+//     { cache: "no-store" }
+//   );
+
+//   const data = await res.json();
+//   const caseStudy = data.data[0];
+
+//   // if (!caseStudy) {
+//   //   return {
+//   //     title: "Case Study Not Found | Quinefiy",
+//   //     description: "The case study you are looking for does not exist.",
+//   //   };
+//   // }
+
+//   return {
+//     // title: `${caseStudy.title} | Case Study | Quinefiy`,
+//     // description:
+//     //   caseStudy.excerpt ||
+//     //   caseStudy.summary ||
+//     //   "Discover how Quinefiy helped businesses with AI, software development, and IT solutions.",
+//     // openGraph: {
+//     //   title: `${caseStudy.title} | Quinefiy Case Study`,
+//     //   description: caseStudy.excerpt || caseStudy.summary,
+//     //   // url: `https://quinefiy.com/case-studies/${slug}`,
+//     //   siteName: "Quinefiy",
+//     //   // images: [
+//     //   //   {
+//     //   //     url: caseStudy.image || "https://quinefiy.com/case-studies-og.jpg",
+//     //   //     alt: caseStudy.title,
+//     //   //   },
+//     //   // ],
+//     //   type: "article",
+//     // },
+//   };
+// }
+
 
 export default async function CaseStudyPage({
   params,
