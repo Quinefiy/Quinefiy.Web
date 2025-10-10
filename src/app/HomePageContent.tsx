@@ -35,8 +35,7 @@ export default function HomePageContent() {
   if (!isFetched || isLoading) {
     return <AnimatedLogo />;
   }
-
-
+ 
   return (
     <div className="w-full flex flex-col xl:gap-[150px] md:gap-[120px] gap-[80px] items-center 2xl:px-[96px] xl:px-[52px] lg:px-[36px] md:px-[21px] sm:px-[19px] px-[16px] ">
       <Hero data={data?.hero} />

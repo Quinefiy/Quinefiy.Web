@@ -29,7 +29,7 @@ const CaseStudies = ({ data, showHeader }: Props) => {
                         <div className="">
 
                             <div className="w-full h-[184px] relative aspect-[332/184] mb-[26px]">
-                                <Image fill src="/assets/Rectangle 8 (4).jpg" alt={c.caseImage.alternativeText || ""} className="rounded-[12px]" />
+                                <Image fill src={c.caseImage.url} alt={c.caseImage.alternativeText || ""} className="rounded-[12px]" />
                             </div>
                             <div>
                                 <h4 className="font-bold text-[#E1E1E1] leading-[140%] lg:text-[16px] text-[14px] mb-[16px]">{c.title}</h4>
