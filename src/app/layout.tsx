@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/Footer";
 import ReactQueryProvider from "@/utils/ReactQueryProvider"; 
 import type { Metadata } from "next";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
   title: "Quinefiy",
@@ -67,6 +68,7 @@ export default function RootLayout({
         {children}
         <Footer />
        </ReactQueryProvider>
+       <GoogleAnalytics gaId="GTM-KZQS7FC9" />
       </body>
     </html>
   );
