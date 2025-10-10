@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 // import { getCaseStudies } from "@/utils/fetchData"; 
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "http://localhost:3000"; 
+  const baseUrl = "https://www.quinefiy.com"; 
 
   // Fetch dynamic case studies from your API
   // const caseStudies = await getCaseStudies();
