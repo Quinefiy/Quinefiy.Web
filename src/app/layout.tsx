@@ -69,6 +69,7 @@ export default function RootLayout({
         <Footer />
        </ReactQueryProvider>
        <GoogleAnalytics gaId="GTM-KZQS7FC9" />
+       <GoogleAnalytics gaId="G-DGCKD6QZBZ" />
       </body>
     </html>
   );
