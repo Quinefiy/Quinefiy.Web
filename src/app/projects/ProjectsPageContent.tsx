@@ -62,7 +62,7 @@ export default function ProjectsPageContent() {
                                                     <p className="font-medium text-[#FFFFFFB2] leading-[160%] 2xl:text-[16px] 2xl:tracking-[1.6px] lg:text-[15px] lg:tracking-[1.5px] sm:tracking-[1.4px] sm:text-[14px] text-[13px] tracking-normal  xl:line-clamp-8 lg:line-clamp-7 sm:line-clamp-6 line-clamp-5">{project.description}</p>
                                                 </div>
                                             </div>
-                                            <div className="sm:w-[46%]  max-w-[518px] relative">
+                                            <div className="sm:w-[46%]  max-w-[518px]  relative sm:aspect-[518/476] aspect-[1/1]">
                                                 <Image fill alt={project.image.alternativeText} src={project.image.url} />
                                             </div>
                                         </div>
