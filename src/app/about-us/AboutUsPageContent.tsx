@@ -83,7 +83,7 @@ export default function AboutUsPageContent() {
                     <p data-delay='0' className="opacity-0 animate-down-on-scroll text-[#FFFFFFD9] tracking-[1.8px] xl:text-[18px] lg:text-[17px] md:text-[16px] sm:text-[15px] text-[14px] font-medium leading-[160%] lg:max-w-[850px] sm:max-w-[83%] text-center">{data?.team.subHeading}</p>
                     <div className="w-full grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 justify-items-center gap-[24px] xl:mt-[40px] lg:mt-[34px] md:mt-[28px] sm:mt-[20px] mt-[12px]">
                         {data?.team?.teamMemebers.map((member: any, index: number) => (
-                            <div className="opacity-0 animate-up-on-scroll max-w-[324px] mx-auto w-full flex flex-col gap-[24px]" key={member.id}>
+                            <div className="opacity-0 animate-up-on-scroll max-w-[324px] mx-auto w-full flex flex-col gap-[24px]" key={member.id + '_' + index}>
                                 <div className="w-full border-[0.7px] border-[#6BAAFFB2] rounded-[16px] relative backdrop-blur-lg aspect-[324/369] overflow-hidden">
                                     <Image fill alt={member.photo.alternativeText ? member.photo.alternativeText : "member"} src={member.photo.url} className="" sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" />
                                 </div>
