@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "about Quinefiy",
     "software development company",
     "AI solutions company",
-    "IT consulting Egypt",
+    "IT consulting Dubai",
     "cloud services provider",
   ],
   openGraph: {
