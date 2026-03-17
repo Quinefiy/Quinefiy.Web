@@ -2,9 +2,9 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/Footer";
-import ReactQueryProvider from "@/utils/ReactQueryProvider"; 
+import ReactQueryProvider from "@/utils/ReactQueryProvider";
 import type { Metadata } from "next";
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
   title: "Quinefiy",
@@ -42,14 +42,14 @@ export const metadata: Metadata = {
     title: "Quinefiy | Software Development & AI Digital Solutions",
     description:
       "Quinefiy delivers AI, software development, API integration, cloud services, cybersecurity, and IT consulting.",
-    images: [""], 
+    images: [""],
   },
 };
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  display: "swap",          
+  display: "swap",
 });
 
 export default function RootLayout({
@@ -63,13 +63,16 @@ export default function RootLayout({
       <body
         className="font-sans bg-[#01070F]"
       >
-       <ReactQueryProvider>
-        <Navbar />
-        {children}
-        <Footer />
-       </ReactQueryProvider>
-       <GoogleAnalytics gaId="GTM-KZQS7FC9" />
-       <GoogleAnalytics gaId="G-DGCKD6QZBZ" />
+        <ReactQueryProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </ReactQueryProvider>
+        {/* 1. Use GoogleTagManager for the GTM ID */}
+        <GoogleTagManager gtmId="GTM-KZQS7FC9" />
+
+        {/* 2. Use GoogleAnalytics ONLY for the G- ID */}
+        <GoogleAnalytics gaId="G-DGCKD6QZBZ" />
       </body>
     </html>
   );
